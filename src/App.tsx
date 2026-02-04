@@ -1,25 +1,50 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import Employees from "./pages/Employees.tsx";
 import AttendancePage from "./pages/Attendance.tsx";
-
 import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="min-h-screen w-full bg-gray-100">
       <nav className="bg-white shadow">
-        <div className="w-full px-10 py-6  flex justify-between">
-          <h1 className="text-xl font-semibold text-gray-700">HRMS Lite</h1>
-          <div className="space-x-6">
-            <Link to="/" className="text-gray-600 hover:text-blue-600">
+        <div className="w-full px-10 py-6 flex justify-between items-center">
+          <h1 className="text-xl font-semibold text-gray-700">
+            HRMS Lite
+          </h1>
+
+          <div className="flex space-x-2 bg-gray-100 p-1 rounded-xl">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `
+                px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300
+                ${
+                  isActive
+                    ? "bg-white text-blue-600 shadow-md"
+                    : "text-gray-600 hover:text-blue-600"
+                }
+                `
+              }
+            >
               Employees
-            </Link>
-            <Link
+            </NavLink>
+
+            <NavLink
               to="/attendance"
-              className="text-gray-600 hover:text-blue-600"
+              className={({ isActive }) =>
+                `
+                px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300
+                ${
+                  isActive
+                    ? "bg-white text-blue-600 shadow-md"
+                    : "text-gray-600 hover:text-blue-600"
+                }
+                `
+              }
             >
               Attendance
-            </Link>
+            </NavLink>
           </div>
         </div>
       </nav>

@@ -101,7 +101,7 @@ const AttendancePage = () => {
       transition={{ duration: 0.3 }}
       className="space-y-10 text-gray-800"
     >
-      {/* Page Title */}
+     {/* Page Title  */}
       <div>
         <h2 className="text-3xl font-bold">Attendance Management</h2>
         <p className="text-gray-500 mt-1">
@@ -204,7 +204,7 @@ const AttendancePage = () => {
         </form>
       </Card>
 
-      {/* SECTION DIVIDER */}
+  
       <div className="border-t border-gray-200 my-8"></div>
 
       {/* VIEW SECTION TITLE */}
@@ -214,7 +214,7 @@ const AttendancePage = () => {
         </h3>
       )}
 
-      {/* SUMMARY */}
+     
       {selectedEmployee && (
         <div className="grid md:grid-cols-2 gap-6">
           <Card>
