@@ -32,9 +32,9 @@ Pydantic (validation)
 
 Deployment
 
-Frontend: Vercel / Netlify
+Frontend: Vercel
 
-Backend: Render / Railway
+Backend: Render 
 
 Database: MongoDB Atlas
 
