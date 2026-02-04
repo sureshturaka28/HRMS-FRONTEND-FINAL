@@ -1,219 +1,300 @@
-⚡ EV Analytics Dashboard
+HRMS Lite – Full Stack Application
+Project Overview
 
-MapUp Frontend Assessment Submission
+HRMS Lite is a lightweight Human Resource Management System designed to manage employee records and track daily attendance.
 
-🚀 Live Demo
+This application demonstrates end-to-end full stack development using a Python backend with MongoDB and a React TypeScript frontend. The system focuses on clean architecture, proper validation, production-ready UI, and stable API integration.
 
-🔗 Add your deployed link here
-Example: https://ev-analytics-dashboard.vercel.app
+The goal of this project is to simulate a simple internal HR tool with essential HR operations while maintaining professional UI standards and backend reliability.
 
-📌 Overview
+Tech Stack
+Frontend
 
-This project is an interactive analytics dashboard built using React + TypeScript + TailwindCSS to analyze the Electric Vehicle (EV) Population dataset (50,000+ records).
-
-The goal was to transform raw EV registration data into meaningful, visually compelling insights while ensuring performance, responsiveness, and strong UX design.
-
-The dashboard focuses on:
-
-Data-driven storytelling
-
-Interactive filtering
-
-Performance optimization
-
-Modern SaaS-style UI
-
-Fully responsive layout
-
-🛠 Tech Stack
-
-React (Vite)
-
-TypeScript
+React (with TypeScript)
 
 Tailwind CSS
 
-Recharts (Data Visualizations)
+Framer Motion (animations)
 
-Framer Motion (Animations)
+Axios (API communication)
 
-React CountUp (Animated KPIs)
+React Hot Toast (notifications)
 
-React Leaflet (Map Visualization)
+Backend
 
-PapaParse (CSV Parsing)
+Python
 
-FileSaver.js (Export functionality)
+FastAPI
 
-📊 Key Features
-🔢 1. Animated KPI Section
+MongoDB (Motor async driver)
 
-Total Registered EVs
+Pydantic (validation)
 
-Average Electric Range
+Deployment
 
-Active Manufacturers
+Frontend: Vercel / Netlify
 
-Cities Covered
+Backend: Render / Railway
 
-KPIs animate on load using react-countup.
+Database: MongoDB Atlas
 
-📈 2. Analytical Visualizations
-Chart	Insight
-📈 EV Adoption Growth	Trend analysis by Model Year
-🏭 Manufacturer Market Share	Top 10 EV manufacturers
-🏙 City-wise Penetration	EV adoption by city
-⚡ Technology Split	Battery vs Plug-in Hybrid distribution
-🔋 Average Range Comparison	Manufacturer-wise efficiency
-🏛 Clean Fuel Eligibility	Policy eligibility breakdown
-🌍 Map Visualization	Geographic distribution of EVs
+Features
+Employee Management
 
-All charts include:
+Add a new employee
 
-Responsive containers
+View all employees
 
-Interactive tooltips with percentage values
+Delete employee
 
-Clean modern styling
+Unique employee ID enforcement
 
-🎛 3. Advanced Filtering
+Email format validation
 
-Users can dynamically filter by:
+Duplicate employee prevention
 
-Manufacturer
+Cascade delete of attendance when employee is deleted
 
-City
+Attendance Management
 
-EV Type
+Mark attendance (Present / Absent)
 
-Year Range
+Prevent duplicate attendance for same date
 
-All charts and KPIs update reactively using useMemo for performance optimization.
+Prevent future date attendance
 
-🌗 4. Dark Mode
+View attendance per employee
 
-Toggle between Light & Dark themes
+Filter attendance by date
 
-Implemented using Tailwind’s dark class strategy
+Summary of total present and absent days
 
-UI adapts across all charts and components
+Validation and Error Handling
 
-📥 5. Export to CSV
+Required field validation
 
-Users can export the currently filtered dataset as a downloadable CSV file.
+Email format validation
 
-🌍 6. Geographic Map View
+Proper HTTP status codes
 
-Interactive map built with React Leaflet showing EV registrations geographically.
+Meaningful backend error messages
 
-📱 7. Fully Responsive Design
+Frontend toast notifications for errors and success states
 
-Fixed sidebar (desktop)
+Loading and empty states handled properly
 
-Slide-in drawer sidebar (mobile)
+API Endpoints
+Employee APIs
 
-Responsive grid layouts
+GET /employees
+Returns all employees
 
-Mobile-optimized header controls
+POST /employees
+Creates a new employee
 
-Adaptive chart stacking
+DELETE /employees/{id}
+Deletes an employee and associated attendance
 
-Works seamlessly across:
+Attendance APIs
 
-Mobile
+POST /attendance
+Marks attendance
 
-Tablet
+GET /attendance/{employee_id}
+Returns attendance records
 
-Laptop
+GET /attendance/{employee_id}?date=YYYY-MM-DD
+Filters attendance by date
 
-Large screens
+GET /attendance/summary/{employee_id}
+Returns total present and absent days
 
-⚡ Performance Optimizations
+Database Design
+Employee Collection
 
-useMemo used for heavy aggregations (50k rows)
+employee_id (unique)
 
-Derived state calculations minimized
+full_name
 
-Efficient data grouping
+email
 
-Avoided unnecessary re-renders
+department
 
-🧠 Analytical Approach
+Unique index enforced at database level on employee_id.
 
-The dataset was used from multiple analytical angles:
+Attendance Collection
 
-Temporal growth trends
+employee_id (reference)
 
-Market share comparison
+date
 
-Geographic distribution
+status (Present / Absent)
 
-Technology segmentation
+Compound uniqueness enforced for employee_id + date.
 
-Efficiency benchmarking
+Project Structure
+Backend
 
-Policy compliance impact
+hrmsbackend/
 
-This ensures not just visualization — but meaningful insights.
+app/
 
-🏗 Project Structure
+main.py
+
+database.py
+
+schemas.py
+
+routes/
+
+employees.py
+
+attendance.py
+
+requirements.txt
+
+Frontend
+
+hrmsfrontend/
+
 src/
-├── components/
-│   ├── layout/
-│   ├── charts/
-│   ├── filters/
-│   ├── kpi/
-│
-├── utils/
-├── App.tsx
+
+pages/
+
+Employees.tsx
+
+Attendance.tsx
+
+components/
+
+services/
+
+types/
+
+Running the Project Locally
+Backend Setup
+
+Navigate to backend folder
+
+cd hrmsbackend
 
 
-Component-based architecture ensures scalability and maintainability.
+Create virtual environment
 
-🚀 Deployment
+python -m venv venv
 
-Deployed using:
 
-Vercel / Netlify (Add your platform)
+Activate virtual environment
 
-📌 Assumptions
+Windows:
 
-Dataset reduced for frontend bundle optimization
+venv\Scripts\Activate.ps1
 
-Some map points limited for performance
 
-CSV export reflects applied filters
+Install dependencies
 
-✨ Future Enhancements
+pip install -r requirements.txt
 
-Clustered map markers
 
-Heatmap visualization
+Run server
 
-Advanced data table with sorting
+uvicorn app.main:app --reload
 
-Lazy-loading large datasets
 
-Server-side data processing
+Backend runs at:
+http://127.0.0.1:8000
 
-👨‍💻 Author
+API documentation available at:
+http://127.0.0.1:8000/docs
 
-Turaka Suresh
-Full Stack Developer
-React | TypeScript | Node | Python
+Frontend Setup
 
-🎯 Final Notes
+Navigate to frontend folder
 
-This dashboard was designed to simulate a production-ready analytics tool rather than a basic academic visualization project.
+cd hrmsfrontend
 
-Focus areas included:
 
-UX clarity
+Install dependencies
 
-Analytical depth
+npm install
 
-Clean architecture
 
-Performance scalability
+Run development server
 
-Responsive product design
+npm run dev
+
+
+Frontend runs at:
+http://localhost:5173
+
+Deployment Notes
+
+MongoDB Atlas used for production database.
+
+Backend deployed on Render / Railway.
+
+Frontend deployed on Vercel / Netlify.
+
+CORS configured properly to allow frontend-backend communication.
+
+Environment variables used for MongoDB connection string.
+
+Assumptions
+
+Single admin user (no authentication implemented).
+
+Leave management and payroll are out of scope.
+
+Only core HR operations included.
+
+Date validation handled at backend level.
+
+Future dates are restricted for attendance marking.
+
+Design Considerations
+
+Clean and responsive UI using Tailwind CSS.
+
+Glass-style card layouts.
+
+Animated transitions for better user experience.
+
+Toast-based error and success messaging.
+
+Structured separation between attendance marking and attendance viewing sections.
+
+Proper empty state and loading indicators.
+
+Possible Improvements
+
+Add authentication and role-based access
+
+Replace native date input with custom calendar component
+
+Add pagination for large employee lists
+
+Add edit employee functionality
+
+Implement dashboard analytics
+
+Add search and sorting
+
+Conclusion
+
+HRMS Lite demonstrates practical full stack development skills including:
+
+RESTful API design
+
+Database modeling
+
+Data validation
+
+Error handling
+
+Responsive UI development
+
+Frontend and backend integration
+
+Production deployment readiness
+
+The system is stable, modular, and ready for extension into a more comprehensive HR platform.
