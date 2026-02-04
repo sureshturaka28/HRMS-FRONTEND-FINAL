@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Employees from "./pages/Employees";
-import AttendancePage from "./pages/Attendance";
+import Employees from "./pages/Employees.tsx";
+import AttendancePage from "./pages/Attendance.tsx";
 
 import { Toaster } from "react-hot-toast";
 

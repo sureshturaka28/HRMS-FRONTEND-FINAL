@@ -79,8 +79,9 @@ const AttendancePage = () => {
       toast.success("Attendance marked successfully");
       fetchAttendance();
     } catch (err) {
-      if (err.response?.data?.detail) {
-        const detail = err.response.data.detail;
+      const error = err as any;
+      if (error?.response?.data?.detail) {
+        const detail = error.response.data.detail;
 
         if (Array.isArray(detail)) {
           toast.error(detail[0].msg);
